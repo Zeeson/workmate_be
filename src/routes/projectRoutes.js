@@ -9,10 +9,11 @@ const checkScopes = jwtAuthz(["read:projects", "create:projects"], {
 }); 
  
 import { 
-    getProjects, postProject, showProject, editProject, updateProject, deleteProject
+    getProjects, getUserProjects, postProject, showProject, editProject, updateProject, deleteProject
 } from '../controllers/projectController'
 
-router.get('/', checkJwt, checkScopes, getProjects)
+router.get('/', checkJwt, getProjects)
+router.get('/user', checkJwt, getUserProjects)
 router.post('/', checkJwt, postProject)
 router.get('/:id', showProject)
 router.get('/:id', editProject)

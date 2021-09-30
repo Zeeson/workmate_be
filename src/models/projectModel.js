@@ -1,21 +1,40 @@
 import mongoose from 'mongoose';
+const {ObjectId} = mongoose.Schema.Types
 const Schema = mongoose.Schema;
 
 const projectModel  = new Schema({
-    title: {type: String, required: true},
-    type: {type: String, enum:["assignment", "research project", "technical writing", "programming"]},  
-    pages: {type: String},
-    submissionDate: {type: String},
-    subject: {type: String},
-    content: {type: String, required: true },
-    date: {type: Date, default: Date.now},
-    attachment:{
+    title: {
+      type: String, required: true
+    },
+    type: {
+      type: String, enum:["Assignment/Essay", "Research project", "Data Analyses", "Technical/Article writing", "Programming"]
+    },  
+    content: {
+      type: String 
+    },
+    pages: {
+      type: String
+    },
+    phoneNumber: {
+      type: Number
+    },
+    email: {
+      type: String
+    },
+    submissionDate: {
+      type: Date, default: Date.now
+    },
+    file:{
         type:String,
-        default:"https://res.cloudinary.com/zeeson-info-tech-and-innovations/image/upload/v1605744370/user1_fp1fwm.png"
+        // default:"https://res.cloudinary.com/zeeson-info-tech-and-innovations/image/upload/v1605744370/user1_fp1fwm.png"
+       }, 
+    userId: {
+         type: String,
        }
   },
-  {timestamps: true
+  {
+    timestamps: true
 })
 
   
-export default mongoose.model('project', projectModel )
+export default mongoose.model('project', projectModel)

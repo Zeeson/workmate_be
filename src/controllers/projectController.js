@@ -18,30 +18,51 @@ export const postProject = (req, res) => {
 console.log(req.body)
 
     const {
-        title, type, pages, submissionDate,  subject, content,  attachment 
+        title, type, content, pages, phoneNumber, email, submissionDate, file
     } = req.body
 
     const newProject = new Project({
         title, 
         type, 
+        content,
         pages, 
+        phoneNumber,
+        email,
         submissionDate, 
-        subject, 
-        content, 
-        attachment
+        file,
+        userId: req.user['https://api.examplezeeson.com/email']
     })
+     // Associate the project entry with the current user
+  let userId = req.user['https://api.examplezeeson.com/email'];
+  newProject.user_id = userId;
+  
+   console.log(userId)
+   console.log(newProject.user_id)
 
-    newProject. save().then((project) => {
+    newProject.save().then((project) => {
         return res.status(200).json({
             message: 'Submission is succesfful',
             project
         })
     }).catch((err) => {
-        res.json("ERROR", err)
+        res.status(400).json(err)
+    })
+}
+
+export const getUserProjects = (req, res, next) => {
+    let userId = req.user['https://api.examplezeeson.com/email'];
+    Project.find({userId})
+    .then((projects) => {
+        res.status(200).json({
+            message: 'user projects',
+            projects
+        })
+    })
+    .catch(err => {
+        res.json(err)
     })
 
 }
-
 export const showProject = (req, res, next) => {
     Project.findById(req.params.id).then(project =>{
         res.status(200).json(project)
@@ -61,7 +82,7 @@ export const editProject = (req, res, next) => {
 }
 
 export const updateProject = (req, res) => {
-    const {title, type, pages, submissionDate,  subject, content,  attachment 
+    const {title, type, content, pages, phoneNumber, email, submissionDate, file, 
     } = req.body
 
     Project.findById(req.params.id).then(project => {
@@ -69,9 +90,10 @@ export const updateProject = (req, res) => {
         project.type = type
         project.pages = pages
         project.submissionDate = submissionDate
-        project.subject = subject
+        project.phoneNumber = phoneNumber
         project.content = content
-        project.attachment = attachment
+        project.email = email
+        project.file = file
 
         project.save().then((updatedProject) => { 
             res.status(200).json(updatedProject)

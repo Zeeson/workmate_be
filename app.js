@@ -1,8 +1,9 @@
 import express from 'express'; 
 const app = express();
-import cors from 'cors'
-import morgan from 'morgan'
-import { checkJwt } from './src/middelwares/oAuth'
+import cors from 'cors';
+import morgan from 'morgan';
+import { checkJwt } from './src/middelwares/oAuth';
+import axios from 'axios';
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
@@ -26,20 +27,7 @@ app.use('/projects', router)
 // morgan
 app.use(morgan('tiny'));
 
- // sample endpoint
- app.post('/timesheets', checkJwt, function(req, res){
-    var timesheet = req.body;
-
-     // Associate the timesheet entry with the current user
-  var userId = req.user['https://api.examplezeeson.com/email'];
-  timesheet.user_id = userId;
-  
-    // Save the timesheet to the database...
-  
-    //send the response
-    res.status(201).send(timesheet);
-  });
-  
+   
   app.use(function(err, req, res, next){
     console.error(err.stack);
     return res.status(err.status).json({ message: err.message });

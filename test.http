@@ -2,31 +2,13 @@ GET http://localhost:2022/projects HTTP/1.1
 Content-Type: application/json
 
 {
-      "title": "testing true",  
-      "type":"assignment",
+      "title": "Data Analyses",  
+      "type":"Data Analyses",
         "pages":15,
-        "submissionDate":"21/11/2021",
-         "subject":"message 1",
+        "submissionDate":"{{$datetime iso8601}}",
+         "phoneNumber":"344",
         "content":"message",
-        "attachment":"message"
+        "file":"message",
+        "email": "ola@gmail.com"
 }
-
-
-###
-PUT http://localhost:8080/api/comment/1 HTTP/1.1
-
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-
-{
-  "title":"Type of Goat",  
-    "type":"assignment",
-        "pages":15,
-        "submissionDate":"21/11/2021",
-         "subject":"message 1",
-        "content":"message",
-        "attachment":"message"
-}
-
-###
 
