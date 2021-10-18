@@ -2,19 +2,20 @@ import express from 'express';
 const app = express();
 import cors from 'cors';
 import morgan from 'morgan';
-import { checkJwt } from './src/middelwares/oAuth';
-import axios from 'axios';
 
 // Express body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
-const corsOptions =  {
-  origin: 'http://localhost:3000'
-};
+// cors local
+// const corsOptions =  {
+//   origin: 'http://localhost:3000'
+// };
+// app.use(cors(corsOptions));
 
-app.use(cors(corsOptions));
-// app.use(cors())
+// cors production
+app.use(cors())
+
 // Configs
 import  { config } from "./src/config/constants"
 import Database from "./src/config/database"
@@ -28,7 +29,6 @@ app.use('/contact-us', contactRoute)
 // morgan
 app.use(morgan('tiny'));
 
-   
   app.use(function(err, req, res, next){
     console.error(err.stack);
     return res.status(err.status).json({ message: err.message });
