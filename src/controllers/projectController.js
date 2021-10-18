@@ -5,13 +5,12 @@ export const getProjects = (req, res, next) => {
     .then((projects) => {
         res.status(200).json({
             message: 'all projects',
-            projects
+            projects,
         })
     })
     .catch(err => {
         res.json(err)
     })
-
 }
 
 export const postProject = (req, res) => {

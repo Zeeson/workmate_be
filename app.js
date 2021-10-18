@@ -6,11 +6,11 @@ import { checkJwt } from './src/middelwares/oAuth';
 import axios from 'axios';
 
 // Express body parser
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 const corsOptions =  {
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:3001'
 };
 
 app.use(cors(corsOptions));
@@ -21,8 +21,9 @@ import Database from "./src/config/database"
 
 // Router
 import router from './src/routes/projectRoutes'
+import contactRoute from './src/routes/contactRoutes'
 app.use('/projects', router)
-
+app.use('/contact-us', contactRoute)
 
 // morgan
 app.use(morgan('tiny'));

@@ -12,3 +12,19 @@ Content-Type: application/json
         "email": "ola@gmail.com"
 }
 
+###
+
+GET http://localhost:2022/contact-us HTTP/1.1
+Content-Type: application/json
+
+{
+      "name": "Ayo mun tan",  
+      "subject":"Others",
+        "message":"Data Analyses is cool yeah!?",
+        "email": "ola@gmail.com",
+        "phoneNumber":"0805543"
+
+}
+
+
+

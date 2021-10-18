@@ -5,7 +5,7 @@ const Database = () => {
     mongoose.connect(config.databaseURI, { 
         useNewUrlParser: true,
         useUnifiedTopology:true,
-        useCreateIndex: true
+        // useCreateIndex: true
         })
     .then(() => {
         console.log("<<:::>> Connected to Database")
