@@ -14,7 +14,7 @@ const corsOptions =  {
 };
 
 app.use(cors(corsOptions));
-
+// app.use(cors())
 // Configs
 import  { config } from "./src/config/constants"
 import Database from "./src/config/database"
