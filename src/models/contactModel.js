@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const contactModel  = new Schema({
-    name: {
+  senderName: {
       type: String, required: true
     },
-    email: {
+    senderEmail: {
       type: String, required: true
     },
     subject: {

@@ -17,12 +17,12 @@ export const postContact = (req, res) => {
 console.log(req.body)
 
     const {
-       name, email, subject, message, phoneNumber,
+        senderName, senderEmail, subject, message, phoneNumber,
     } = req.body
 
     const newContact = new Contact({
-        name,
-        email,
+        senderName,
+        senderEmail,
         subject,
         message,
         phoneNumber,
