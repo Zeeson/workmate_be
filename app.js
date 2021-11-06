@@ -8,10 +8,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 // cors local
-// const corsOptions =  {
-//   origin: 'http://localhost:3000'
-// };
-// app.use(cors(corsOptions));
+const corsOptions =  {
+  origin: 'http://localhost:3000'
+};
+app.use(cors(corsOptions));
 
 // cors production
 app.use(cors())
@@ -23,8 +23,11 @@ import Database from "./src/config/database"
 // Router
 import router from './src/routes/projectRoutes'
 import contactRoute from './src/routes/contactRoutes'
+import paymentRoute from './src/routes/paymentRoutes'
+
 app.use('/projects', router)
 app.use('/contact-us', contactRoute)
+app.use('/paystack', paymentRoute)
 
 // morgan
 app.use(morgan('tiny'));

@@ -12,12 +12,25 @@ export const getProjects = (req, res, next) => {
         res.json(err)
     })
 }
+export const getProjectsWithPayments = (req, res, next) => {
+    Project.find({paymentId: req.payment._id})
+    .populate("Payment")
+    .then((projects) => {
+        res.status(200).json({
+            message: 'all projects',
+            projects,
+        })
+    })
+    .catch(err => {
+        res.json(err)
+    })
+}
 
 export const postProject = (req, res) => {
-console.log(req.body)
+// console.log(req.body)
 
     const {
-        title, type, content, pages, phoneNumber, email, submissionDate, file
+        title, type, content, pages, phoneNumber, email, submissionDate, file,
     } = req.body
 
     const newProject = new Project({
@@ -29,6 +42,7 @@ console.log(req.body)
         email,
         submissionDate, 
         file,
+        // isPaid: false,
         userId: req.user['https://api.examplezeeson.com/email']
     })
      // Associate the project entry with the current user
@@ -39,6 +53,7 @@ console.log(req.body)
    console.log(newProject.user_id)
 
     newProject.save().then((project) => {
+        console.log(project)
         return res.status(200).json({
             message: 'Submission is succesfful',
             project
