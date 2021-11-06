@@ -8,10 +8,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 // cors local
-const corsOptions =  {
-  origin: 'http://localhost:3000'
-};
-app.use(cors(corsOptions));
+// const corsOptions =  {
+//   origin: 'http://localhost:3000'
+// };
+// app.use(cors(corsOptions));
 
 // cors production
 app.use(cors())

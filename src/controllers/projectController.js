@@ -124,3 +124,28 @@ export const deleteProject = (req, res,next) => {
         res.status(400).json(err)
     })
 }
+
+
+
+export const updatePayment = (req, res) => {
+    const {title, type, content, pages, phoneNumber, email, submissionDate, file, isPaid,
+    } = req.body
+
+    Project.findById(req.params.id).then(project => {
+        project.title = title
+        project.type = type
+        project.pages = pages
+        project.submissionDate = submissionDate
+        project.phoneNumber = phoneNumber
+        project.content = content
+        project.email = email
+        project.file = file
+        project.isPaid = isPaid
+
+        project.save().then((updatedProject) => { 
+            res.status(200).json(updatedProject)
+        })
+    }).catch(err => {
+        res.status(400).json(err)
+    })
+}
