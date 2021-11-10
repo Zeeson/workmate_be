@@ -30,7 +30,7 @@ console.log(req.body)
     
     newContact.save().then((contact) => {
         return res.status(200).json({
-            message: 'Submission is succesfful',
+            message: 'Thanks! We successfully recieved your message.',
             contact
         })
     }).catch((err) => {
