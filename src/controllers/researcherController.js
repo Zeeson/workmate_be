@@ -31,7 +31,7 @@ console.log(req.body)
         linkedln
     })
     
-    newResearcher.save().then((researcher) => {
+     newResearcher.save().then((researcher) => {
         return res.status(200).json({
             message: 'Thanks! We successfully recieved your application.',
             researcher

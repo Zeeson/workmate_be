@@ -9,10 +9,10 @@ const researcherModel  = new Schema({
       type: String, required: true
     },
     qualification: {
-      type: String, enum:["Qualification", "Secondary", "Diploma", "College-Degree", "Masters", "PhD"]
+      type: String, enum:["Qualification", "Secondary", "Diploma", "College Degree", "Masters", "PhD"]
     },
     experience: {
-        type: String, enum:["Experience", "Entry-Level", "Intermediate", "Advanced"]
+        type: String, enum:["Experience", "Entry Level", "Intermediate", "Advanced"]
       },   
     phone: {
       type: String

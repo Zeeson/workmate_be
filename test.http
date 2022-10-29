@@ -47,8 +47,8 @@ Content-Type: application/json
       "resume":"https://drive.google.com/file/d/14DQmVzZiTwhnjA1MLU7VvQQPh9vxhOVG/view?usp=share_link",
         "senderEmail": "ibrahim@gmail.com",
         "phone":"+234807697268",
-        "experience":"Entry-Level",
-        "qualification":"College-Degree",
+        "experience":"Entry Level",
+        "qualification":"College Degree",
         "interest": ["Engineering", "Social Science"],
         "linkedln": "linkedln.com/ibrahim"
 }
