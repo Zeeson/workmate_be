@@ -24,10 +24,12 @@ import Database from "./src/config/database"
 import router from './src/routes/projectRoutes'
 import contactRoute from './src/routes/contactRoutes'
 import paymentRoute from './src/routes/paymentRoutes'
+import researcherRoute from "./src/routes/researcherRoutes"
 
 app.use('/projects', router)
 app.use('/contact-us', contactRoute)
 app.use('/paystack', paymentRoute)
+app.use('/researcher', researcherRoute)
 
 // morgan
 app.use(morgan('tiny'));
