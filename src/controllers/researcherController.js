@@ -17,7 +17,7 @@ export const postResearcher = (req, res) => {
 console.log(req.body)
 
     const {
-        fullName, senderEmail, phone, qualification, experience, resume
+        fullName, senderEmail, phone, qualification, experience, resume, interest, linkedln
     } = req.body
 
     const newResearcher = new Researcher({
@@ -26,7 +26,9 @@ console.log(req.body)
         phone,
         qualification,
         experience,
-        resume
+        resume,
+        interest,
+        linkedln
     })
     
     newResearcher.save().then((researcher) => {

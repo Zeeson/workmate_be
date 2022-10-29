@@ -20,6 +20,10 @@ const researcherModel  = new Schema({
     resume: {
         type: String
     },
+    interest: [String],
+    linkedln:{
+      type: String
+    },      
     date: {
       type: Date, default: Date.now
     }

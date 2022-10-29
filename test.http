@@ -38,9 +38,8 @@ Content-Type: application/json
 }
 
 
-
 ###
-GET http://localhost:2022/researcher/635d1f231792a9839e99e869 HTTP/1.1
+POST http://localhost:2022/researcher/ HTTP/1.1
 Content-Type: application/json
 
 {
@@ -49,5 +48,7 @@ Content-Type: application/json
         "senderEmail": "ibrahim@gmail.com",
         "phone":"+234807697268",
         "experience":"Entry-Level",
-        "qualification":"College-Degree"
+        "qualification":"College-Degree",
+        "interest": ["Engineering", "Social Science"],
+        "linkedln": "linkedln.com/ibrahim"
 }
