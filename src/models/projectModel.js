@@ -19,7 +19,8 @@ const projectModel  = new Schema({
       type: Number
     },
     email: {
-      type: String
+      type: String,
+      unique: true
     },
     submissionDate: {
       type: Date, default: Date.now

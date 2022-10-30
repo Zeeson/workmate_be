@@ -2,11 +2,16 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const researcherModel  = new Schema({
-  fullName: {
+    firstName: {
+      type: String, required: true
+    },
+    lastName: {
       type: String, required: true
     },
     senderEmail: {
-      type: String, required: true
+      type: String, 
+      required: true, 
+      unique: true
     },
     qualification: {
       type: String, enum:["Qualification", "Secondary", "Diploma", "College Degree", "Masters", "PhD"]

@@ -6,7 +6,9 @@ const contactModel  = new Schema({
       type: String, required: true
     },
     senderEmail: {
-      type: String, required: true
+      type: String, 
+      required: true, 
+      unique: true
     },
     subject: {
       type: String, enum:["Assignment/Essay", "Research project", "Data Analyses", "Technical/Article writing", "Programming", "Others"]
