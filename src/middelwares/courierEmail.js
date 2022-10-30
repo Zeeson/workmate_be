@@ -4,17 +4,17 @@ export const sendEmail = async (firstName, senderEmail) => {
   const courier = CourierClient({ authorizationToken: process.env.COURIER_KEY }); // get from the Courier UI
       const { requestId } = await courier.send({
       message: {
-          // template: "<TEMPLATE_OR_EVENT_ID>",
+          template: "9X70YM2DKS4KA4PFXNSZAHK7RPSQ",
           to: {
           data: {
               name: firstName,
           },
-          email: senderEmail,
+            email: senderEmail,
           },
-          content: {
-          title: "Welcome to the Family",
-          body: "Oh my {{name}}, we need 1.21 Gigawatts!",
-          },
+          // content: {
+          // title: "Welcome to the Family",
+          // body: "Oh my {{name}}, we need 1.21 Gigawatts!",
+          // },
           routing: {
           method: "single",
           channels: ["email"],
