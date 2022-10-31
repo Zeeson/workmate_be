@@ -1,6 +1,31 @@
 import Researcher from '../models/researcherModel'
 import asyncHandler from "express-async-handler"
-import {sendEmail} from "../middelwares/courierEmail"
+// import {sendEmail} from "../middelwares/courierEmail"
+import { CourierClient } from "@trycourier/courier";
+
+const sendEmail = async (firstName, senderEmail) => {
+  const courier = CourierClient({ authorizationToken: process.env.COURIER_KEY }); // get from the Courier UI
+      const { requestId } = await courier.send({
+      message: {
+          template: "9X70YM2DKS4KA4PFXNSZAHK7RPSQ",
+          to: {
+          data: {
+              name: firstName,
+          },
+            email: senderEmail,
+          },
+          // content: {
+          // title: "Welcome to the Family",
+          // body: "Oh my {{name}}, we need 1.21 Gigawatts!",
+          // },
+          routing: {
+          method: "single",
+          channels: ["email"],
+          },
+      },
+      })
+
+}
 
 export const getResearchers = (req, res) => {
     Researcher.find()
