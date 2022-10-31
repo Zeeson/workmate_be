@@ -9,7 +9,7 @@ export const sendEmail = async (firstName, senderEmail) => {
           data: {
               name: firstName,
           },
-            email: senderEmail,
+            email: `${senderEmail},`,
           },
           // content: {
           // title: "Welcome to the Family",
