@@ -2,6 +2,7 @@ import express from 'express';
 const app = express();
 import cors from 'cors';
 import morgan from 'morgan';
+import { CourierClient } from "@trycourier/courier";
 
 // Express body parser
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,32 @@ app.use('/projects', router)
 app.use('/contact-us', contactRoute)
 app.use('/paystack', paymentRoute)
 app.use('/researcher', researcherRoute)
+
+// Email
+export const sendEmail = async (firstName, senderEmail) => {
+  const courier = CourierClient({ authorizationToken: process.env.COURIER_KEY }); // get from the Courier UI
+      const { requestId } = await courier.send({
+      message: {
+          template: "9X70YM2DKS4KA4PFXNSZAHK7RPSQ",
+          to: {
+          data: {
+              name: firstName,
+          },
+            email: senderEmail,
+          },
+          // content: {
+          // title: "Welcome to the Family",
+          // body: "Oh my {{name}}, we need 1.21 Gigawatts!",
+          // },
+          routing: {
+          method: "single",
+          channels: ["email"],
+          },
+      },
+      })
+
+}
+
 
 // morgan
 app.use(morgan('tiny'));
