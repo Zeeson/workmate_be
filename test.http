@@ -39,14 +39,14 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:2022/researcher/ HTTP/1.1
+POST https://workmate-apis.herokuapp.com/researcher/ HTTP/1.1
 Content-Type: application/json
 
 {
       "firstName":"John", 
       "lastName": "Zaria", 
       "resume":"https://drive.google.com/file/d/14DQmVzZiTwhnjA1MLU7VvQQPh9vxhOVG/view?usp=share_link",
-        "senderEmail": "ibrahim.saliman.zainab@gmail.com",
+        "senderEmail":"ibrahim.saliman.zainab@gmail.com",
         "phone":"+234807697268",
         "experience":"Entry Level",
         "qualification":"College Degree",
