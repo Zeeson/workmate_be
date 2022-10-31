@@ -1,8 +1,6 @@
 import Researcher from '../models/researcherModel'
 import asyncHandler from "express-async-handler"
-import {sendEmail} from "../../app"
-// import { CourierClient } from "@trycourier/courier";
-
+import {sendEmail} from "../middelwares/courierEmail"
 
 export const getResearchers = (req, res) => {
     Researcher.find()
