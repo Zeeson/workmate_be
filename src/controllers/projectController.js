@@ -1,4 +1,5 @@
 import Project from '../models/projectModel';
+import {sendEmail} from "../middelwares/courierEmail"
 
 export const getProjects = (req, res, next) => {
     Project.find()
@@ -26,7 +27,7 @@ export const getProjectsWithPayments = (req, res, next) => {
     })
 }
 
-export const postProject = (req, res) => {
+export const postProject = async (req, res) => {
 // console.log(req.body)
 
     const {
@@ -52,7 +53,7 @@ export const postProject = (req, res) => {
    console.log(userId)
    console.log(newProject.user_id)
 
-    newProject.save().then((project) => {
+   await newProject.save().then((project) => {
         console.log(project)
         return res.status(200).json({
             message: 'Submission is succesfful. You can contact +2348059303261 on WhatsApp for speedy attention',
@@ -61,6 +62,14 @@ export const postProject = (req, res) => {
     }).catch((err) => {
         res.status(400).json(err)
     })
+
+     await sendEmail (firstName, email, phoneNumber, function(err, data) {
+        if (err) {
+            res.status(500).json({ message: 'Internal Error' });
+        } else {
+            res.status({ message: 'Email sent!!!' });
+        }
+    });
 }
 
 export const getUserProjects = (req, res, next) => {
