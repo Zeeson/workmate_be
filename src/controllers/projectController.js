@@ -63,11 +63,13 @@ export const postProject = async (req, res) => {
         res.status(400).json(err)
     })
 
-     await sendEmail(firstName, email, phoneNumber, function(err, data) {
+     await sendEmail(email, phoneNumber, function(err, data) {
         if (err) {
             res.status(500).json({ message: 'Internal Error' });
+            console.log("Failure")
         } else {
             res.status({ message: 'Email sent!!!' });
+            console.log("Success")
         }
     });
 }
