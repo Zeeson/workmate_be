@@ -41,7 +41,7 @@ try {
         })
         
     })
-   await sendEmail (firstName, senderEmail, function(err, data) {
+   await sendEmail(firstName, senderEmail, function(err, data) {
         if (err) {
             res.status(500).json({ message: 'Internal Error' });
         } else {

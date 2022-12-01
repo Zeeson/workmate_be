@@ -1,5 +1,5 @@
 import Project from '../models/projectModel';
-import {sendEmail} from "../middelwares/courierEmail"
+import {sendEmail} from "../middelwares/projectNotification"
 
 export const getProjects = (req, res, next) => {
     Project.find()
@@ -63,7 +63,7 @@ export const postProject = async (req, res) => {
         res.status(400).json(err)
     })
 
-     await sendEmail (firstName, email, phoneNumber, function(err, data) {
+     await sendEmail(firstName, email, phoneNumber, function(err, data) {
         if (err) {
             res.status(500).json({ message: 'Internal Error' });
         } else {
